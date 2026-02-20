@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: daydream-scope
+    env: python
+    region: oregon
+    buildCommand: |
+      pip install uv
+      uv sync --frozen
+    startCommand: uv run daydream-scope --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONUNBUFFERED 
+        value: "1"
+      - key: DAYDREAM_SCOPE_LOGS_DIR
+        value: /workspace/logs
+      - key: DAYDREAM_SCOPE_MODELS_DIR
+        value: /workspace/models
+    autoDeploy: true
