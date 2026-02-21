@@ -6,6 +6,11 @@ services:
     buildCommand: |
       pip install uv
       uv sync --frozen
+      uv run daydream-scope install https://github.com/sharkymarky/kaleido-scope
+      uv run daydream-scope install https://github.com/daydreamlive/scope_yolo_mask
+      uv run daydream-scope install https://github.com/jamesdawsonWD/scope-bloom
+      uv run daydream-scope install https://github.com/theCosmicCrafter/scope-cosmic-vfx
+      uv run daydream-scope install https://github.com/viborc/scope-vfx
     startCommand: uv run daydream-scope --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHONUNBUFFERED 
