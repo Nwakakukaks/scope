@@ -3,6 +3,7 @@ services:
     name: daydream-scope
     env: python
     region: oregon
+
     buildCommand: |
       pip install uv
       uv sync --frozen
@@ -11,12 +12,17 @@ services:
       uv run daydream-scope install https://github.com/jamesdawsonWD/scope-bloom
       uv run daydream-scope install https://github.com/theCosmicCrafter/scope-cosmic-vfx
       uv run daydream-scope install https://github.com/viborc/scope-vfx
+
     startCommand: uv run daydream-scope --host 0.0.0.0 --port $PORT
+
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.1
       - key: PYTHONUNBUFFERED 
         value: "1"
       - key: DAYDREAM_SCOPE_LOGS_DIR
         value: /workspace/logs
       - key: DAYDREAM_SCOPE_MODELS_DIR
         value: /workspace/models
+
     autoDeploy: true
