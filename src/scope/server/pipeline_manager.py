@@ -659,6 +659,13 @@ class PipelineManager:
             "scribble",
             "gray",
             "optical-flow",
+            "kaleido-scope",
+            "kaleido-scope-pre",
+            "kaleido-scope-post",
+            "yolo_mask",
+            "bloom",
+            "cosmic-vfx",
+            "vfx-pack",
         }
 
         if pipeline_class is not None and pipeline_id not in BUILTIN_PIPELINES:
@@ -1120,6 +1127,52 @@ class PipelineManager:
                 device=get_device(),
             )
             logger.info("OpticalFlow pipeline initialized")
+            return pipeline
+        elif pipeline_id == "kaleido-scope":
+            from scope.core.pipelines.kaleido_scope import KaleidoScopePipeline
+
+            pipeline = KaleidoScopePipeline(device=get_device(), **(load_params or {}))
+            logger.info("KaleidoScope pipeline initialized")
+            return pipeline
+        elif pipeline_id == "kaleido-scope-pre":
+            from scope.core.pipelines.kaleido_scope import KaleidoScopePrePipeline
+
+            pipeline = KaleidoScopePrePipeline(
+                device=get_device(), **(load_params or {})
+            )
+            logger.info("KaleidoScopePre pipeline initialized")
+            return pipeline
+        elif pipeline_id == "kaleido-scope-post":
+            from scope.core.pipelines.kaleido_scope import KaleidoScopePostPipeline
+
+            pipeline = KaleidoScopePostPipeline(
+                device=get_device(), **(load_params or {})
+            )
+            logger.info("KaleidoScopePost pipeline initialized")
+            return pipeline
+        elif pipeline_id == "yolo_mask":
+            from scope.core.pipelines.yolo_mask import YOLOMaskPipeline
+
+            pipeline = YOLOMaskPipeline(device=get_device(), **(load_params or {}))
+            logger.info("YOLOMask pipeline initialized")
+            return pipeline
+        elif pipeline_id == "bloom":
+            from scope.core.pipelines.bloom import BloomPipeline
+
+            pipeline = BloomPipeline(device=get_device(), **(load_params or {}))
+            logger.info("Bloom pipeline initialized")
+            return pipeline
+        elif pipeline_id == "cosmic-vfx":
+            from scope.core.pipelines.cosmic_vfx import CosmicVFXPipeline
+
+            pipeline = CosmicVFXPipeline(device=get_device(), **(load_params or {}))
+            logger.info("CosmicVFX pipeline initialized")
+            return pipeline
+        elif pipeline_id == "vfx-pack":
+            from scope.core.pipelines.vfx_pack import VFXPipeline
+
+            pipeline = VFXPipeline(device=get_device(), **(load_params or {}))
+            logger.info("VFXPipeline initialized")
             return pipeline
         else:
             raise ValueError(f"Invalid pipeline ID: {pipeline_id}")

@@ -173,6 +173,13 @@ def _register_pipelines():
         ("scribble", ".scribble.pipeline", "ScribblePipeline"),
         ("gray", ".gray.pipeline", "GrayPipeline"),
         ("optical_flow", ".optical_flow.pipeline", "OpticalFlowPipeline"),
+        ("kaleido-scope", ".kaleido_scope.pipeline", "KaleidoScopePipeline"),
+        ("kaleido-scope-pre", ".kaleido_scope.pipeline", "KaleidoScopePrePipeline"),
+        ("kaleido-scope-post", ".kaleido_scope.pipeline", "KaleidoScopePostPipeline"),
+        ("yolo_mask", ".yolo_mask.pipeline", "YOLOMaskPipeline"),
+        ("bloom", ".bloom.pipeline", "BloomPipeline"),
+        ("cosmic-vfx", ".cosmic_vfx.pipeline", "CosmicVFXPipeline"),
+        ("vfx-pack", ".vfx_pack.pipeline", "VFXPipeline"),
     ]
 
     # Try to import and register each pipeline
