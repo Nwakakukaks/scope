@@ -663,7 +663,7 @@ def create_rtc_config() -> RTCConfiguration:
     try:
         from huggingface_hub import get_token
 
-        hf_token = get_token()
+        hf_token = get_token() or os.getenv("HF_TOKEN")
         twilio_account_sid = os.getenv("TWILIO_ACCOUNT_SID")
         twilio_auth_token = os.getenv("TWILIO_AUTH_TOKEN")
 
